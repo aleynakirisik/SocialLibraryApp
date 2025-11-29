@@ -1,0 +1,51 @@
+.arama-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.arama-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.sonuc-listesi {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.sonuc-karti {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.sonuc-karti img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.sonuc-bilgi {
+  padding: 10px;
+}
+
+.sonuc-bilgi h4 {
+  font-size: 0.9rem;
+  margin: 0 0 5px 0;
+}
+
+.tur-etiketi {
+  background-color: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #666;
+}

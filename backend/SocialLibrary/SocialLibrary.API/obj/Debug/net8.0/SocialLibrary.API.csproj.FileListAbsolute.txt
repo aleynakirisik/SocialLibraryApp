@@ -102,3 +102,4 @@ C:\Users\user\Desktop\SocialLibraryApp\backend\SocialLibrary\SocialLibrary.API\o
 C:\Users\user\Desktop\SocialLibraryApp\backend\SocialLibrary\SocialLibrary.API\obj\Debug\net8.0\SocialLibrary.API.pdb
 C:\Users\user\Desktop\SocialLibraryApp\backend\SocialLibrary\SocialLibrary.API\obj\Debug\net8.0\SocialLibrary.API.genruntimeconfig.cache
 C:\Users\user\Desktop\SocialLibraryApp\backend\SocialLibrary\SocialLibrary.API\obj\Debug\net8.0\ref\SocialLibrary.API.dll
+C:\Users\user\Desktop\SocialLibraryApp\backend\SocialLibrary\SocialLibrary.API\obj\Debug\net8.0\SocialLibrary.API.sourcelink.json

@@ -1,0 +1,38 @@
+[
+  {
+    "ContainingType": "SocialLibrary.API.Controllers.AkisController",
+    "Method": "AkisiGetir",
+    "RelativePath": "api/Akis",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AramaController",
+    "Method": "Ara",
+    "RelativePath": "api/Arama",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "q",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VeriYukleController",
+    "Method": "VerileriDoldur",
+    "RelativePath": "api/VeriYukle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

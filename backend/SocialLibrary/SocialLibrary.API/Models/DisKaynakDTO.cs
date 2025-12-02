@@ -14,6 +14,7 @@
         public string poster_path { get; set; }
         public string release_date { get; set; } // Yayın Yılı
         public double vote_average { get; set; } // Puan
+        public int vote_count { get; set; }
     }
 
     // Google Books (Kitap) Cevap Modeli

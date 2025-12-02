@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SocialLibrary.API.Data;
 using SocialLibrary.API.Models;
 using SocialLibrary.API.Services;
@@ -19,11 +20,18 @@ public class VeriYukleController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> VerileriDoldur()
     {
-        // 1. Veritabanını oluştur
+        // 1. Veritabanını oluştur (Yoksa)
         await _context.Database.EnsureCreatedAsync();
-        string mesaj = "Veritabanı kontrol edildi. ";
 
-        // 2. Admin Kullanıcısı Oluştur
+        // 2. TEMİZLİK ZAMANI: Önce eski/hatalı/çift verileri SİLİYORUZ.
+        // Böylece her çalıştırdığında veritabanın sıfırlanır ve temizlenir.
+        if (_context.Icerikler.Any())
+        {
+            _context.Icerikler.RemoveRange(_context.Icerikler);
+            await _context.SaveChangesAsync();
+        }
+
+        // 3. Admin Kullanıcısı Yoksa Oluştur
         if (!_context.Kullanicilar.Any())
         {
             var admin = new Kullanici
@@ -31,43 +39,32 @@ public class VeriYukleController : ControllerBase
                 KullaniciAdi = "admin",
                 Email = "admin@gmail.com",
                 Sifre = "12345",
-                Biyografi = "Yönetici hesabı",
+                Biyografi = "Sistem Yöneticisi",
                 ProfilResmiUrl = "https://ui-avatars.com/api/?name=Admin&background=000&color=fff"
             };
             _context.Kullanicilar.Add(admin);
-            await _context.SaveChangesAsync();
-            mesaj += "Admin oluşturuldu. ";
         }
 
-        // 3. İçerikleri API'den Çek ve Doldur
-        if (!_context.Icerikler.Any())
-        {
-            var eklenecekler = new List<Icerik>();
+        // 4. Kaliteli İçerikleri API'den Çek
+        var eklenecekler = new List<Icerik>();
 
-            // Popüler Filmleri Çek
-            var populerFilmler = await _apiService.PopulerFilmleriGetir();
-            eklenecekler.AddRange(populerFilmler);
+        // 50 Film
+        var filmler = await _apiService.KaliteliFilmleriGetir();
+        eklenecekler.AddRange(filmler);
 
-            // Ekstra Kitaplar
-            var kitaplar = await _apiService.KitapAra("Harry Potter");
-            eklenecekler.AddRange(kitaplar);
+        // 50 Kitap
+        var kitaplar = await _apiService.KaliteliKitaplariGetir();
+        eklenecekler.AddRange(kitaplar);
 
-            // Hata almamak için ID'ye göre tekilleştir (Aynı içerik iki kere eklenmesin)
-            var temizListe = eklenecekler
-                .GroupBy(x => x.DisKaynakId)
-                .Select(g => g.First())
-                .ToList();
+        // 5. Veritabanına Kaydet (Distinct ile ID kontrolü yaparak garantiye alıyoruz)
+        var temizListe = eklenecekler
+            .GroupBy(x => x.DisKaynakId) // Aynı ID'li olanları grupla
+            .Select(g => g.First())      // Sadece ilkini al
+            .ToList();
 
-            _context.Icerikler.AddRange(temizListe);
-            await _context.SaveChangesAsync();
+        _context.Icerikler.AddRange(temizListe);
+        await _context.SaveChangesAsync();
 
-            mesaj += $"{temizListe.Count} adet içerik yüklendi.";
-        }
-        else
-        {
-            mesaj += "İçerikler zaten dolu.";
-        }
-
-        return Ok(mesaj);
+        return Ok($"Veritabanı temizlendi ve {temizListe.Count} adet kaliteli içerik yüklendi.");
     }
 }

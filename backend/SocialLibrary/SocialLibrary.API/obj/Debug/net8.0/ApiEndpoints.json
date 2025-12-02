@@ -26,6 +26,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "IcerikController",
+    "Method": "GetIcerik",
+    "RelativePath": "api/Icerik/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KutuphaneController",
+    "Method": "ListeyeEkle",
+    "RelativePath": "api/Kutuphane/Ekle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "AktiviteIstegi",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KutuphaneController",
+    "Method": "ProfilGetir",
+    "RelativePath": "api/Kutuphane/Profil/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "VeriYukleController",
     "Method": "VerileriDoldur",
     "RelativePath": "api/VeriYukle",

@@ -16,6 +16,7 @@ const Navbar = () => {
       <div className="nav-links">
         <Link to="/akis">Ana Sayfa</Link>
         <Link to="/arama">🔍 Keşfet</Link>
+        <Link to="/profil">👤 Profilim</Link>
         <button onClick={cikisYap} className="cikis-btn">Çıkış</button>
       </div>
     </nav>

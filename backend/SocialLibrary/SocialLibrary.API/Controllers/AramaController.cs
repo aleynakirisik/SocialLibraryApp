@@ -17,52 +17,78 @@ public class AramaController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Ara(string? q)
+    [HttpGet("Ara")]
+    public async Task<IActionResult> Ara(string? q, string? tur, string? yil, double? minPuan)
     {
-        // 1. Arama kutusu BOŞSA -> Veritabanındaki hazır vitrini getir
-        if (string.IsNullOrWhiteSpace(q))
+        if (string.IsNullOrWhiteSpace(q) &&
+            (string.IsNullOrWhiteSpace(tur) || tur == "Hepsi") &&
+            string.IsNullOrWhiteSpace(yil) &&
+            (minPuan == null || minPuan == 0))
         {
-            var vitrin = await _context.Icerikler
-                                       .OrderByDescending(x => x.Puan)
-                                       .Take(50)
-                                       .ToListAsync();
-            return Ok(vitrin);
+            return Ok(new List<Icerik>());
         }
 
-        // 2. Arama yapıldıysa -> API'den verileri çek
-        var filmGorevi = _apiService.FilmAra(q);
-        var kitapGorevi = _apiService.KitapAra(q);
+        var sorgu = _context.Icerikler.AsQueryable();
 
-        await Task.WhenAll(filmGorevi, kitapGorevi);
-
-        var hamSonuclar = new List<Icerik>();
-        hamSonuclar.AddRange(filmGorevi.Result);
-        hamSonuclar.AddRange(kitapGorevi.Result);
-
-        // 3. KRİTİK DÜZELTME: Gelenleri Veritabanına Kaydet (ID Oluşsun Diye)
-        var sonuclar = new List<Icerik>();
-
-        foreach (var item in hamSonuclar)
+        //kelime arama
+        if (!string.IsNullOrWhiteSpace(q))
         {
-            // Bu içerik zaten veritabanında var mı? (DisKaynakId ile kontrol et)
-            var mevcut = await _context.Icerikler
-                .FirstOrDefaultAsync(x => x.DisKaynakId == item.DisKaynakId);
-
-            if (mevcut != null)
-            {
-                // Varsa onu kullan (Çünkü onun gerçek bir ID'si var)
-                sonuclar.Add(mevcut);
-            }
-            else
-            {
-                // Yoksa veritabanına ekle
-                _context.Icerikler.Add(item);
-                await _context.SaveChangesAsync(); // Kaydet ki ID oluşsun
-                sonuclar.Add(item); // Artık item.Id doldu (örn: 105)
-            }
+            sorgu = sorgu.Where(x => x.Baslik.ToLower().Contains(q.ToLower()));
         }
+
+        // tür
+        if (!string.IsNullOrWhiteSpace(tur) && tur != "Hepsi")
+        {
+            sorgu = sorgu.Where(x => x.IcerikTuru == tur);
+        }
+
+        // yıl
+        if (!string.IsNullOrWhiteSpace(yil))
+        {
+            sorgu = sorgu.Where(x => x.YayinYili != null && x.YayinYili.Contains(yil));
+        }
+
+        // puan
+        if (minPuan.HasValue && minPuan > 0)
+        {
+            sorgu = sorgu.Where(x => x.Puan >= minPuan);
+        }
+
+        var sonuclar = await sorgu
+            .OrderByDescending(x => x.Puan)
+            .Take(50)
+            .ToListAsync();
 
         return Ok(sonuclar);
+    }
+
+    [HttpGet("Vitrin")]
+    public async Task<IActionResult> VitrinGetir()
+    {
+        var enCokEtkilesimAlanlar = await _context.Aktiviteler
+            .GroupBy(a => a.IcerikId)
+            .OrderByDescending(g => g.Count()) 
+            .Select(g => g.Key)
+            .Take(10)
+            .ToListAsync();
+
+        var enPopulerler = await _context.Icerikler
+            .Where(x => enCokEtkilesimAlanlar.Contains(x.Id))
+            .ToListAsync();
+
+        var enYuksekPuanliIdler = await _context.Aktiviteler
+            .Where(a => a.EylemTuru == "PUAN" && a.Puan > 0)
+            .GroupBy(a => a.IcerikId)
+            .Select(g => new { Id = g.Key, Ortalama = g.Average(x => x.Puan) })
+            .OrderByDescending(x => x.Ortalama) 
+            .Select(x => x.Id)
+            .Take(10)
+            .ToListAsync();
+
+        var enYuksekPuanlilar = await _context.Icerikler
+            .Where(x => enYuksekPuanliIdler.Contains(x.Id))
+            .ToListAsync();
+
+        return Ok(new { EnYuksekPuan = enYuksekPuanlilar, EnPopuler = enPopulerler });
     }
 }

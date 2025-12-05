@@ -1,7 +1,76 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\services\\hariciapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\services\\hariciapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\models\\icerikdetaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\models\\icerikdetaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\models\\diskaynakdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\models\\diskaynakdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\models\\dbmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\models\\dbmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\models\\authdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\models\\authdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\veriyuklecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\veriyuklecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\sosyalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\sosyalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\ozellistecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\ozellistecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\kutuphanecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\kutuphanecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\icerikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\icerikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\aramacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\aramacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|c:\\users\\user\\desktop\\sociallibraryapp\\backend\\sociallibrary\\sociallibrary.api\\controllers\\akiscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E35C59-AB10-43C8-BB36-745E35DCCA0F}|SocialLibrary.API\\SocialLibrary.API.csproj|solutionrelative:sociallibrary.api\\controllers\\akiscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +78,232 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Program.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Program.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:18.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\appsettings.json",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\appsettings.json",
+              "RelativeToolTip": "SocialLibrary.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T06:24:16.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Services\\EmailService.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:15.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HariciApiService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Services\\HariciApiService.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Services\\HariciApiService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Services\\HariciApiService.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Services\\HariciApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:14.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IcerikDetayDTO.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\IcerikDetayDTO.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Models\\IcerikDetayDTO.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\IcerikDetayDTO.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Models\\IcerikDetayDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:12.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DisKaynakDTO.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\DisKaynakDTO.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Models\\DisKaynakDTO.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\DisKaynakDTO.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Models\\DisKaynakDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:11.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DbModels.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\DbModels.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Models\\DbModels.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\DbModels.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Models\\DbModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:10.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthDTO.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\AuthDTO.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Models\\AuthDTO.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Models\\AuthDTO.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Models\\AuthDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:09.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:08.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "VeriYukleController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\VeriYukleController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\VeriYukleController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\VeriYukleController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\VeriYukleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:06.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SosyalController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\SosyalController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\SosyalController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\SosyalController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\SosyalController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:05.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OzelListeController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\OzelListeController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\OzelListeController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\OzelListeController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\OzelListeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:24:00.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "KutuphaneController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\KutuphaneController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\KutuphaneController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\KutuphaneController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\KutuphaneController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:23:59.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IcerikController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\IcerikController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\IcerikController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\IcerikController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\IcerikController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:23:55.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:23:54.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AramaController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\AramaController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\AramaController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\AramaController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\AramaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:23:50.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AkisController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\AkisController.cs",
+              "RelativeDocumentMoniker": "SocialLibrary.API\\Controllers\\AkisController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\SocialLibraryApp\\backend\\SocialLibrary\\SocialLibrary.API\\Controllers\\AkisController.cs",
+              "RelativeToolTip": "SocialLibrary.API\\Controllers\\AkisController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:23:46.316Z",
+              "EditorCaption": ""
             }
           ]
         }

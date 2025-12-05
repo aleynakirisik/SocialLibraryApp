@@ -4,15 +4,12 @@ using SocialLibrary.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// --- 1. VERİTABANI SERVİSİ (EKSİK OLAN KISIM BURASIYDI) ---
-// appsettings.json dosyasındaki "DefaultConnection" ismini okur
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// --- 2. HARİCİ API SERVİSİ (TMDb ve Google Books için) ---
 builder.Services.AddHttpClient<HariciApiService>();
+builder.Services.AddScoped<SocialLibrary.API.Services.EmailService>();
 
-// --- 3. DİĞER STANDART AYARLAR ---
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
@@ -25,14 +22,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// --- 4. OTOMATİK VERİTABANI OLUŞTURMA (Magic Code) ---
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
         var context = services.GetRequiredService<AppDbContext>();
-        context.Database.EnsureCreated(); // Veritabanı yoksa oluşturur!
+        context.Database.EnsureCreated(); // veritabanı yoksa oluştur
     }
     catch (Exception ex)
     {
@@ -41,7 +37,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Swagger'ı her ortamda açalım ki rahat test et
 app.UseSwagger();
 app.UseSwaggerUI();
 

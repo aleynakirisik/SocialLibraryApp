@@ -20,51 +20,85 @@ public class VeriYukleController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> VerileriDoldur()
     {
-        // 1. Veritabanını oluştur (Yoksa)
+        // veritabanı oluşturma
         await _context.Database.EnsureCreatedAsync();
+        string mesaj = "";
 
-        // 2. TEMİZLİK ZAMANI: Önce eski/hatalı/çift verileri SİLİYORUZ.
-        // Böylece her çalıştırdığında veritabanın sıfırlanır ve temizlenir.
-        if (_context.Icerikler.Any())
-        {
-            _context.Icerikler.RemoveRange(_context.Icerikler);
-            await _context.SaveChangesAsync();
-        }
-
-        // 3. Admin Kullanıcısı Yoksa Oluştur
-        if (!_context.Kullanicilar.Any())
+        // admin ekle
+        var adminVarMi = await _context.Kullanicilar.AnyAsync(x => x.Email == "admin@gmail.com");
+        if (!adminVarMi)
         {
             var admin = new Kullanici
             {
                 KullaniciAdi = "admin",
                 Email = "admin@gmail.com",
                 Sifre = "12345",
-                Biyografi = "Sistem Yöneticisi",
+                Biyografi = "Film ve kitap tutkunu.",
                 ProfilResmiUrl = "https://ui-avatars.com/api/?name=Admin&background=000&color=fff"
             };
             _context.Kullanicilar.Add(admin);
+            await _context.SaveChangesAsync();
+            mesaj += "Admin kullanıcısı oluşturuldu. ";
+        }
+        else
+        {
+            mesaj += "Kullanıcılar korundu. ";
+        }
+        if (!_context.Takipler.Any())
+        {
+            var adminUser = await _context.Kullanicilar.FirstOrDefaultAsync(u => u.KullaniciAdi == "admin");
+            var digerleri = await _context.Kullanicilar.Where(u => u.KullaniciAdi != "admin").ToListAsync();
+
+            if (adminUser != null)
+            {
+                foreach (var user in digerleri)
+                {
+                    _context.Takipler.Add(new Takip
+                    {
+                        TakipEdenKullaniciId = adminUser.Id,
+                        TakipEdilenKullaniciId = user.Id
+                    });
+                }
+                await _context.SaveChangesAsync();
+                mesaj += "Admin diğer kullanıcıları takip etti. ";
+            }
         }
 
-        // 4. Kaliteli İçerikleri API'den Çek
+        var mevcutIdler = await _context.Icerikler.Select(x => x.DisKaynakId).ToListAsync();
         var eklenecekler = new List<Icerik>();
 
-        // 50 Film
+        // TMDb
         var filmler = await _apiService.KaliteliFilmleriGetir();
-        eklenecekler.AddRange(filmler);
+        //olmayanları listeye al
+        foreach (var film in filmler)
+        {
+            if (!mevcutIdler.Contains(film.DisKaynakId)) eklenecekler.Add(film);
+        }
 
-        // 50 Kitap
+        // Google Books
         var kitaplar = await _apiService.KaliteliKitaplariGetir();
-        eklenecekler.AddRange(kitaplar);
+        //olmayanları listeye al
+        foreach (var kitap in kitaplar)
+        {
+            if (!mevcutIdler.Contains(kitap.DisKaynakId)) eklenecekler.Add(kitap);
+        }
 
-        // 5. Veritabanına Kaydet (Distinct ile ID kontrolü yaparak garantiye alıyoruz)
-        var temizListe = eklenecekler
-            .GroupBy(x => x.DisKaynakId) // Aynı ID'li olanları grupla
-            .Select(g => g.First())      // Sadece ilkini al
-            .ToList();
+        if (eklenecekler.Count > 0)
+        {
+            var temizListe = eklenecekler
+                .GroupBy(x => x.DisKaynakId)
+                .Select(g => g.First())
+                .ToList();
 
-        _context.Icerikler.AddRange(temizListe);
-        await _context.SaveChangesAsync();
+            _context.Icerikler.AddRange(temizListe);
+            await _context.SaveChangesAsync();
+            mesaj += $"{temizListe.Count} yeni içerik veritabanına eklendi.";
+        }
+        else
+        {
+            mesaj += "Yeni içerik bulunamadı veya hepsi zaten yüklü.";
+        }
 
-        return Ok($"Veritabanı temizlendi ve {temizListe.Count} adet kaliteli içerik yüklendi.");
+        return Ok(mesaj);
     }
 }

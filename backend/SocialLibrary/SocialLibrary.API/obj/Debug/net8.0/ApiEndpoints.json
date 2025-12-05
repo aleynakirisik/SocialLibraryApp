@@ -1,18 +1,29 @@
 [
   {
-    "ContainingType": "SocialLibrary.API.Controllers.AkisController",
+    "ContainingType": "AkisController",
     "Method": "AkisiGetir",
     "RelativePath": "api/Akis",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "kullaniciId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "sayfa",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "AramaController",
     "Method": "Ara",
-    "RelativePath": "api/Arama",
+    "RelativePath": "api/Arama/Ara",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -21,6 +32,95 @@
         "Name": "q",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "tur",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "yil",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "minPuan",
+        "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AramaController",
+    "Method": "VitrinGetir",
+    "RelativePath": "api/Arama/Vitrin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthController",
+    "Method": "Giris",
+    "RelativePath": "api/Auth/Giris",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "SocialLibrary.API.Models.GirisDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthController",
+    "Method": "Kayit",
+    "RelativePath": "api/Auth/Kayit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "SocialLibrary.API.Models.KayitDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthController",
+    "Method": "SifremiUnuttum",
+    "RelativePath": "api/Auth/SifremiUnuttum",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "SocialLibrary.API.Models.SifreUnuttumDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AuthController",
+    "Method": "SifreSifirla",
+    "RelativePath": "api/Auth/SifreSifirla",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "SocialLibrary.API.Models.SifreSifirlaDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -37,6 +137,11 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "kullaniciId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -68,6 +173,250 @@
       {
         "Name": "userId",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KutuphaneController",
+    "Method": "ProfilGuncelle",
+    "RelativePath": "api/Kutuphane/ProfilGuncelle",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "KullaniciGuncellemeIstegi",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KutuphaneController",
+    "Method": "YorumGuncelle",
+    "RelativePath": "api/Kutuphane/YorumGuncelle",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "SocialLibrary.API.Models.YorumGuncelleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KutuphaneController",
+    "Method": "YorumlariGetir",
+    "RelativePath": "api/Kutuphane/Yorumlar/{icerikId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "icerikId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KutuphaneController",
+    "Method": "YorumSil",
+    "RelativePath": "api/Kutuphane/YorumSil/{yorumId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "yorumId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "kullaniciId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OzelListeController",
+    "Method": "ListeDetayi",
+    "RelativePath": "api/OzelListe/Detay/{listeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listeId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OzelListeController",
+    "Method": "ListeleriGetir",
+    "RelativePath": "api/OzelListe/Getir/{kullaniciId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "kullaniciId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OzelListeController",
+    "Method": "IcerikEkle",
+    "RelativePath": "api/OzelListe/IcerikEkle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "oge",
+        "Type": "SocialLibrary.API.Models.OzelListeOgesi",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OzelListeController",
+    "Method": "ListeOlustur",
+    "RelativePath": "api/OzelListe/Olustur",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "liste",
+        "Type": "SocialLibrary.API.Models.OzelListe",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SosyalController",
+    "Method": "AktiviteYorumEkle",
+    "RelativePath": "api/Sosyal/AktiviteYorumEkle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "AktiviteYorumuIstegi",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SosyalController",
+    "Method": "AktiviteYorumlariGetir",
+    "RelativePath": "api/Sosyal/AktiviteYorumlari/{aktiviteId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "aktiviteId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SosyalController",
+    "Method": "Begen",
+    "RelativePath": "api/Sosyal/Begen",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "BegeniIstegi",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SosyalController",
+    "Method": "TakipDurumu",
+    "RelativePath": "api/Sosyal/Durum",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ben",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "o",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SosyalController",
+    "Method": "Filtrele",
+    "RelativePath": "api/Sosyal/Filtrele",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tur",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "yil",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "minPuan",
+        "Type": "System.Nullable\u00601[[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SosyalController",
+    "Method": "TakipEt",
+    "RelativePath": "api/Sosyal/TakipIslemi",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "istek",
+        "Type": "TakipIstegi",
         "IsRequired": true
       }
     ],

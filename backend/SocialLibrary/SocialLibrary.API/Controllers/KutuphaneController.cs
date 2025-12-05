@@ -17,38 +17,99 @@ public class KutuphaneController : ControllerBase
     [HttpPost("Ekle")]
     public async Task<IActionResult> ListeyeEkle([FromBody] AktiviteIstegi istek)
     {
-        // Yorum ve Puanlamalar her seferinde yeni bir aktivite olarak eklenir (Feed akışı için)
-        // Ancak Listeye Ekleme (İzlenecek) durumunda güncelleme yapılabilir.
+        var icerik = await _context.Icerikler.FindAsync(istek.IcerikId);
+        if (icerik == null) return NotFound("İçerik bulunamadı.");
 
-        var yeniAktivite = new Aktivite
+        Aktivite? mevcut = null;
+
+        if (istek.Tur != "YORUM")
         {
-            KullaniciId = istek.KullaniciId,
-            IcerikId = istek.IcerikId,
-            EylemTuru = istek.Tur,
-            Puan = istek.Puan,
-            Yorum = istek.Yorum,
-            Aciklama = GetAciklama(istek.Tur, istek.Puan),
-            OlusturulmaTarihi = DateTime.UtcNow
-        };
+            mevcut = await _context.Aktiviteler
+                .FirstOrDefaultAsync(x => x.KullaniciId == istek.KullaniciId
+                                       && x.IcerikId == istek.IcerikId
+                                       && x.EylemTuru == istek.Tur);
+        }
 
-        _context.Aktiviteler.Add(yeniAktivite);
+        string aciklama = GetAciklama(istek.Tur, icerik.IcerikTuru);
+
+        if (mevcut != null)
+        {
+            if (istek.Puan > 0) mevcut.Puan = istek.Puan;
+            mevcut.OlusturulmaTarihi = DateTime.UtcNow;
+            mevcut.Aciklama = aciklama;
+            if (!string.IsNullOrEmpty(istek.Yorum)) mevcut.Yorum = istek.Yorum;
+        }
+        else
+        {
+            var yeniAktivite = new Aktivite
+            {
+                KullaniciId = istek.KullaniciId,
+                IcerikId = istek.IcerikId,
+                EylemTuru = istek.Tur,
+                Puan = istek.Puan,
+                Yorum = istek.Yorum,
+                Aciklama = aciklama,
+                OlusturulmaTarihi = DateTime.UtcNow
+            };
+            _context.Aktiviteler.Add(yeniAktivite);
+        }
+
         await _context.SaveChangesAsync();
+
+        if (istek.Tur == "PUAN")
+        {
+            var tumPuanlar = await _context.Aktiviteler
+                .Where(x => x.IcerikId == istek.IcerikId && x.EylemTuru == "PUAN" && x.Puan > 0)
+                .Select(x => x.Puan)
+                .ToListAsync();
+
+            if (tumPuanlar.Any())
+            {
+                double yeniOrtalama = tumPuanlar.Average(x => x.Value);
+
+                icerik.Puan = Math.Round(yeniOrtalama, 1);
+
+                _context.Icerikler.Update(icerik);
+                await _context.SaveChangesAsync();
+            }
+        }
+
         return Ok("İşlem kaydedildi.");
     }
 
-    // 2. BİR İÇERİĞE AİT YORUMLARI GETİR (Detay Sayfası İçin)
+    private string GetAciklama(string eylemTuru, string icerikTuru)
+    {
+        string nesne = icerikTuru == "Film" ? "bir filmi" : "bir kitabı";
+        string nesne2 = icerikTuru == "Film" ? "bir film" : "bir kitap";
+
+        return eylemTuru switch
+        {
+            "PUAN" => $"{nesne} oyladı.", 
+            "YORUM" => $"{nesne2} hakkında yorum yaptı.", 
+            "IZLENDI" => "bir filmi izledi.",
+            "OKUNDU" => "bir kitabı okudu.",
+            "IZLENECEK" => "bir filmi izleme listesine ekledi.",
+            "OKUNACAK" => "bir kitabı okuma listesine ekledi.",
+            "BEGENI" => "bir aktiviteyi beğendi.",
+            _ => "bir işlem yaptı."
+        };
+    }
+
     [HttpGet("Yorumlar/{icerikId}")]
     public async Task<IActionResult> YorumlariGetir(int icerikId)
     {
         var yorumlar = await _context.Aktiviteler
-            .Include(a => a.Kullanici) // Yorumu yapanın adını/resmini de al
+            .Include(a => a.Kullanici) 
             .Where(a => a.IcerikId == icerikId && a.EylemTuru == "YORUM")
             .OrderByDescending(a => a.OlusturulmaTarihi)
             .Select(a => new
             {
                 Id = a.Id,
+                KullaniciId = a.KullaniciId,
                 KullaniciAdi = a.Kullanici.KullaniciAdi,
-                Avatar = a.Kullanici.ProfilResmiUrl,
+                Avatar = !string.IsNullOrEmpty(a.Kullanici.ProfilResmiUrl)
+                         ? a.Kullanici.ProfilResmiUrl
+                         : "https://via.placeholder.com/50",
                 Yorum = a.Yorum,
                 Tarih = a.OlusturulmaTarihi
             })
@@ -57,49 +118,90 @@ public class KutuphaneController : ControllerBase
         return Ok(yorumlar);
     }
 
-    // 2. PROFİL BİLGİLERİNİ GETİR (PDF Madde 2.1.5 - Kütüphanem)
     [HttpGet("Profil/{userId}")]
     public async Task<IActionResult> ProfilGetir(int userId)
     {
         var kullanici = await _context.Kullanicilar.FindAsync(userId);
         if (kullanici == null) return NotFound();
 
-        // Kullanıcının tüm hareketlerini çek
         var aktiviteler = await _context.Aktiviteler
-            .Include(a => a.Icerik) // İçerik detaylarını da getir (Resim, Başlık)
+            .Include(a => a.Icerik)
             .Where(a => a.KullaniciId == userId)
+            .OrderByDescending(a => a.OlusturulmaTarihi) 
             .ToListAsync();
 
-        // Frontend için temiz bir obje oluştur
         var profilVerisi = new
         {
             Kullanici = kullanici,
+
+            SonAktiviteler = aktiviteler
+                 .Where(a => a.EylemTuru == "YORUM" || a.EylemTuru == "PUAN") 
+                 .Take(4) // Son 5 tanesi
+                 .Select(a => new {
+                     Id = a.Id,
+                     IcerikId = a.Icerik.Id,
+                     Baslik = a.Icerik.Baslik,
+                     Tur = a.EylemTuru,
+                     Zaman = a.OlusturulmaTarihi,
+                     Aciklama = a.Aciklama
+                 }).ToList(),
             Izlediklerim = aktiviteler.Where(x => x.EylemTuru == "IZLENDI").Select(x => x.Icerik).ToList(),
             Izlenecekler = aktiviteler.Where(x => x.EylemTuru == "IZLENECEK").Select(x => x.Icerik).ToList(),
             Okuduklarim = aktiviteler.Where(x => x.EylemTuru == "OKUNDU").Select(x => x.Icerik).ToList(),
             Okunacaklar = aktiviteler.Where(x => x.EylemTuru == "OKUNACAK").Select(x => x.Icerik).ToList()
         };
-
         return Ok(profilVerisi);
+        
+    }  
+
+    [HttpPut("ProfilGuncelle")]
+    public async Task<IActionResult> ProfilGuncelle([FromBody] KullaniciGuncellemeIstegi istek)
+    {
+        var kullanici = await _context.Kullanicilar.FindAsync(istek.Id);
+        if (kullanici == null) return NotFound();
+
+        kullanici.Biyografi = istek.Biyografi;
+        kullanici.ProfilResmiUrl = istek.ProfilResmiUrl;
+
+        await _context.SaveChangesAsync();
+        return Ok("Profil güncellendi.");
+    }
+ 
+    [HttpDelete("YorumSil/{yorumId}")]
+    public async Task<IActionResult> YorumSil(int yorumId, int kullaniciId)
+    {
+        var yorum = await _context.Aktiviteler.FindAsync(yorumId);
+        if (yorum == null) return NotFound();
+
+        if (yorum.KullaniciId != kullaniciId)
+            return Unauthorized("Sadece kendi yorumunuzu silebilirsiniz.");
+
+        _context.Aktiviteler.Remove(yorum);
+        await _context.SaveChangesAsync();
+        return Ok("Yorum silindi.");
     }
 
-    // Yardımcı Metot: Feed'de görünecek yazı
-    private string GetAciklama(string tur, double? puan)
+    [HttpPut("YorumGuncelle")]
+    public async Task<IActionResult> YorumGuncelle([FromBody] YorumGuncelleDto istek)
     {
-        return tur switch
-        {
-            "YORUM" => "bir yorum yaptı.",
-            "PUAN" => $"bir içeriğe {puan}/10 puan verdi.",
-            "IZLENDI" => "bir filmi izledi.",
-            "IZLENECEK" => "bir filmi izleme listesine ekledi.",
-            "OKUNDU" => "bir kitabı okudu.",
-            "OKUNACAK" => "bir kitabı okuma listesine ekledi.",
-            _ => "bir işlem yaptı."
-        };
+        var yorum = await _context.Aktiviteler.FindAsync(istek.YorumId);
+        if (yorum == null) return NotFound();
+
+        yorum.Yorum = istek.YeniMetin;
+        yorum.OlusturulmaTarihi = DateTime.UtcNow; 
+
+        await _context.SaveChangesAsync();
+        return Ok("Yorum güncellendi.");
     }
 }
 
-// Frontend'den gelecek veri modeli
+public class KullaniciGuncellemeIstegi
+{
+    public int Id { get; set; }
+    public string Biyografi { get; set; }
+    public string ProfilResmiUrl { get; set; }
+}
+
 public class AktiviteIstegi
 {
     public int KullaniciId { get; set; }

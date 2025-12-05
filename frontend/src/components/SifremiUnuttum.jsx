@@ -14,7 +14,7 @@ const SifremiUnuttum = () => {
     setMesaj(''); setHata('');
 
     axios.post(`https://localhost:${PORT}/api/Auth/SifremiUnuttum`, { email })
-      .then(res => setMesaj(res.data)) // "Link gönderildi" mesajı
+      .then(res => setMesaj(res.data)) 
       .catch(err => setHata(err.response?.data || "Hata oluştu."));
   };
 

@@ -12,11 +12,11 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="nav-logo">📚 Sosyal Kütüphane</div>
+      <div className="nav-logo">Sosyal Kütüphane</div>
       <div className="nav-links">
         <Link to="/akis">Ana Sayfa</Link>
-        <Link to="/arama">🔍 Keşfet</Link>
-        <Link to="/profil">👤 Profilim</Link>
+        <Link to="/arama">Keşfet</Link>
+        <Link to="/profil"> Profilim</Link>
         <button onClick={cikisYap} className="cikis-btn">Çıkış</button>
       </div>
     </nav>

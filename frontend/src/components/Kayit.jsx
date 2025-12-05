@@ -8,29 +8,26 @@ const Kayit = () => {
     kullaniciAdi: '',
     email: '',
     sifre: '',
-    sifreTekrar: '' // [cite: 19] Şifre tekrar alanı
+    sifreTekrar: '' 
   });
   const [hata, setHata] = useState('');
   const navigate = useNavigate();
-  const PORT = "44321"; // Portunu kontrol et
+  const PORT = "44321";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.type === 'text' && e.target.name !== 'kullaniciAdi' ? 'kullaniciAdi' : e.target.name]: e.target.value });
-    // Input isimlerini aşağıda düzelttim, burayı basitleştirelim:
-    // setFormData({...formData, [e.target.name]: e.target.value});
+
   };
 
   const handleKayit = (e) => {
     e.preventDefault();
     setHata('');
 
-    // Validasyonlar
     if (formData.sifre !== formData.sifreTekrar) {
         setHata("Şifreler uyuşmuyor!");
         return;
     }
 
-    // Backend'e İstek At
     axios.post(`https://localhost:${PORT}/api/Auth/Kayit`, {
         kullaniciAdi: formData.kullaniciAdi,
         email: formData.email,
@@ -38,10 +35,9 @@ const Kayit = () => {
     })
     .then(res => {
         alert(res.data);
-        navigate('/'); // Girişe yönlendir
+        navigate('/'); 
     })
     .catch(err => {
-        //  Backend'den gelen net hata mesajını göster
         setHata(err.response?.data || "Kayıt başarısız.");
     });
   };
@@ -49,19 +45,26 @@ const Kayit = () => {
   return (
     <div className="form-container">
       <form className="auth-form" onSubmit={handleKayit}>
-        <h2>Kayıt Ol</h2>
-        {hata && <div className="hata-kutusu">{hata}</div>}
         
-        {/* [cite: 19] İstenen Alanlar */}
+        <span className="brand-logo">✨</span>
+        <h2>Aramıza Katıl</h2>
+        <p className="auth-subtitle">Hemen ücretsiz hesabını oluştur</p>
+
+        {hata && <div className="hata-kutusu">⚠️ {hata}</div>}
+        
         <input name="kullaniciAdi" type="text" placeholder="Kullanıcı Adı" onChange={e => setFormData({...formData, kullaniciAdi: e.target.value})} required />
         <input name="email" type="email" placeholder="E-posta" onChange={e => setFormData({...formData, email: e.target.value})} required />
         <input name="sifre" type="password" placeholder="Şifre" onChange={e => setFormData({...formData, sifre: e.target.value})} required />
         <input name="sifreTekrar" type="password" placeholder="Şifre Tekrar" onChange={e => setFormData({...formData, sifreTekrar: e.target.value})} required />
         
         <button type="submit">Kayıt Ol</button>
-        <p>Zaten hesabın var mı? <Link to="/">Giriş Yap</Link></p>
+        
+        <div className="auth-footer">
+            Zaten hesabın var mı? <Link to="/">Giriş Yap</Link>
+        </div>
       </form>
     </div>
   );
 };
+
 export default Kayit;

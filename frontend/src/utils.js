@@ -8,7 +8,7 @@ export const zamanHesapla = (tarih) => {
     aralik = saniye / 86400;
     if (aralik > 1) return Math.floor(aralik) + " gün önce";
     aralik = saniye / 3600;
-    if (aralik > 1) return Math.floor(aralik) + " saat önce"; // PDF 
+    if (aralik > 1) return Math.floor(aralik) + " saat önce"; 
     aralik = saniye / 60;
     if (aralik > 1) return Math.floor(aralik) + " dakika önce";
     return "Az önce";

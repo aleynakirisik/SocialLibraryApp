@@ -16,35 +16,50 @@ const Giris = () => {
 
     axios.post(`https://localhost:${PORT}/api/Auth/Giris`, { email, sifre })
       .then(res => {
-        // Kullanıcıyı tarayıcıya kaydet
         localStorage.setItem('kullanici', JSON.stringify(res.data));
         navigate('/akis');
       })
       .catch(err => {
-        //  "E-posta veya şifre hatalı" mesajını göster
-        setHata(err.response?.data || "Giriş başarısız.");
+        setHata(err.response?.data || "E-posta veya şifre hatalı.");
       });
   };
 
   return (
     <div className="form-container">
       <form className="auth-form" onSubmit={handleGiris}>
-        <h2>Giriş Yap</h2>
-        {hata && <div className="hata-kutusu">{hata}</div>}
-        
-        {/* [cite: 20] İstenen Alanlar */}
-        <input type="email" placeholder="E-posta" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Şifre" value={sifre} onChange={(e) => setSifre(e.target.value)} required />
+
+        <span className="brand-logo">📚</span>
+        <h2>Sosyal Kütüphane</h2>
+
+        {hata && <div className="hata-kutusu">⚠️ {hata}</div>}
+
+        <input 
+            type="email" 
+            placeholder="E-posta Adresiniz" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
+        />
+        <input 
+            type="password" 
+            placeholder="Şifreniz" 
+            value={sifre} 
+            onChange={(e) => setSifre(e.target.value)} 
+            required 
+        />
         
         <button type="submit">Giriş Yap</button>
         
-        {/*  Şifre Sıfırlama Linki */}
-        <div style={{marginTop:'10px', fontSize:'0.9rem'}}>
-            <Link to="/sifremi-unuttum">Şifremi Unuttum</Link> 
+        <div className="auth-footer">
+            <Link to="/sifremi-unuttum" style={{display:'block', marginBottom:'10px', color:'#777', fontWeight:'normal'}}>
+                Şifremi Unuttum?
+            </Link>
+            Hesabın yok mu? <Link to="/kayit">Kayıt Ol</Link>
         </div>
-        <p>Hesabın yok mu? <Link to="/kayit">Kayıt Ol</Link></p>
+
       </form>
     </div>
   );
 };
+
 export default Giris;

@@ -1,0 +1,24 @@
+.liste-detay-container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+.liste-header { 
+    display: flex; align-items: center; gap: 20px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 15px;
+}
+.liste-header h1 { margin: 0; font-size: 1.8rem; color: #333; flex: 1; }
+.geri-btn { background: none; border: 1px solid #ccc; padding: 5px 15px; border-radius: 5px; cursor: pointer; }
+.sayac { color: #666; font-weight: bold; }
+
+.liste-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+
+.liste-kart { 
+    background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    cursor: pointer; transition: transform 0.2s;
+}
+.liste-kart:hover { transform: translateY(-5px); }
+.liste-kart img { width: 100%; height: 250px; object-fit: cover; }
+
+.kart-bilgi { padding: 10px; }
+.kart-bilgi h4 { margin: 0 0 5px 0; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tur-badge { font-size: 0.8rem; background: #eee; padding: 2px 6px; border-radius: 4px; color: #555; }
+
+.bos-liste { text-align: center; margin-top: 50px; color: #777; }
+.bos-liste button { background: #1877f2; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px; }

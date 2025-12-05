@@ -1,35 +1,63 @@
 .navbar {
-  background-color: #fff;
-  padding: 10px 20px;
+  position: sticky; 
+  top: 0;
+  z-index: 1000; 
+  background-color: rgba(255, 255, 255, 0.95); 
+  backdrop-filter: blur(10px); 
+  padding: 0.8rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  border-bottom: 1px solid #eaeaea;
 }
 
+
 .nav-logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #1877f2;
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+}
+
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-links a {
-  margin-right: 15px;
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
+  font-weight: 600;
+  color: #65676b;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
 .nav-links a:hover {
-  color: #1877f2;
+  background-color: #f2f2f2;
+  color: #1877f2; 
 }
 
+
 .cikis-btn {
-  background-color: #ff4d4d;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cikis-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
 }

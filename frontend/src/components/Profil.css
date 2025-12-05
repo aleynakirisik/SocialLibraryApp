@@ -29,3 +29,100 @@
 .son-aktiviteler-kutusu ul { padding-left: 20px; margin-bottom: 0; }
 .son-aktiviteler-kutusu li { margin-bottom: 5px; color: #555; font-size: 0.95rem; }
 .son-aktiviteler-kutusu .tarih { color: #888; margin-right: 10px; font-size: 0.85rem; }
+
+.ozel-listeler-grid { display: flex; gap: 15px; flex-wrap: wrap; }
+.ozel-liste-kart { 
+    background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; 
+    width: 150px; text-align: center; cursor: pointer; transition: 0.2s;
+}
+.ozel-liste-kart:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.klasor-ikon { font-size: 2rem; margin-bottom: 10px; }
+
+.yeni-liste-kart {
+    border: 2px dashed #1877f2; 
+    background-color: #f0f7ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.liste-form-kucuk {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.liste-form-kucuk input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.liste-form-kucuk button {
+    border: none;
+    padding: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.aktivite-listesi-profil {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+.aktivite-satir {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px; 
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    
+    border: 1px solid #eee; 
+}
+
+
+
+
+
+.aktivite-ikon {
+    width: 32px;  
+    height: 32px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1rem; 
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+
+.aktivite-metin {
+    flex: 1;
+}
+
+.aktivite-baslik-satiri {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.aktivite-baslik-satiri strong {
+    color: #333;
+    font-size: 0.85rem; 
+}
+
+.aktivite-baslik-satiri .tarih {
+    font-size: 0.75rem; 
+    color: #999;
+}
+
+.aktivite-aciklama {
+    margin: 0;
+    font-size: 0.8rem; 
+    color: #666;
+}

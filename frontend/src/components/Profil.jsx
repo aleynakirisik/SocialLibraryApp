@@ -12,39 +12,38 @@ const Profil = () => {
   const [takipEdiyor, setTakipEdiyor] = useState(false);
   const [aktifSekme, setAktifSekme] = useState('izlenecek');
   
-  // DÜZENLEME MODU
   const [duzenlemeModu, setDuzenlemeModu] = useState(false);
   const [yeniBio, setYeniBio] = useState("");
   const [yeniAvatar, setYeniAvatar] = useState("");
+  const [ozelListeler, setOzelListeler] = useState([]);
+  const [yeniListeAdi, setYeniListeAdi] = useState("");
+const [listeOlusturmaModu, setListeOlusturmaModu] = useState(false);
+  const PORT = "44321"; 
 
-  const PORT = "44321"; // Portunu kontrol et
-
-  // --- DÜZELTME BURADA BAŞLIYOR ---
-  
-  // 1. Tarayıcı hafızasından giriş yapan kişiyi al
   const kayitliKullanici = JSON.parse(localStorage.getItem('kullanici'));
 
-  // Eğer giriş yapılmamışsa giriş sayfasına at
   useEffect(() => {
     if (!kayitliKullanici) {
         navigate('/');
     }
   }, [kayitliKullanici, navigate]);
 
-  // Giriş yapanın ID'sini al
   const benimId = kayitliKullanici ? kayitliKullanici.id : 0;
   
-  // Eğer URL'de ID varsa ona bak (/profil/5), yoksa bana bak (/profil)
   const profilId = id ? parseInt(id) : benimId; 
-
-  // --------------------------------
+  const ozelListeleriGetir = () => {
+    axios.get(`https://localhost:${PORT}/api/OzelListe/Getir/${profilId}`)
+         .then(res => setOzelListeler(res.data));
+};
+useEffect(() => {
+    if (aktifSekme === 'ozelliste') ozelListeleriGetir();
+}, [aktifSekme]);
 
   useEffect(() => {
     if (!kayitliKullanici) return;
 
     verileriGetir();
     
-    // Başkasının profiline bakıyorsam takip durumunu sor
     if (profilId !== benimId) {
         axios.get(`https://localhost:${PORT}/api/Sosyal/Durum?ben=${benimId}&o=${profilId}`)
              .then(res => setTakipEdiyor(res.data));
@@ -63,7 +62,10 @@ const Profil = () => {
 
   const takipIslemi = () => {
     axios.post(`https://localhost:${PORT}/api/Sosyal/TakipIslemi`, { benimId, baskasiId: profilId })
-         .then(res => { setTakipEdiyor(!takipEdiyor); alert(res.data); });
+         .then(res => { 
+             setTakipEdiyor(!takipEdiyor); 
+         })
+         .catch(err => console.error("Takip işlemi hatası:", err));
   };
 
   const profiliKaydet = () => {
@@ -72,12 +74,27 @@ const Profil = () => {
         .then(() => {
             setDuzenlemeModu(false);
             verileriGetir();
-            // Navbar'daki resmi güncellemek için localStorage'ı da güncelle
             kayitliKullanici.profilResmi = yeniAvatar;
             localStorage.setItem('kullanici', JSON.stringify(kayitliKullanici));
             alert("Profil güncellendi!");
         });
   };
+  
+  const listeOlustur = () => {
+    if (!yeniListeAdi.trim()) return;
+
+    axios.post(`https://localhost:${PORT}/api/OzelListe/Olustur`, { 
+        baslik: yeniListeAdi, 
+        kullaniciId: benimId 
+    })
+    .then(() => {
+        setYeniListeAdi(""); 
+        setListeOlusturmaModu(false); 
+        ozelListeleriGetir(); 
+        alert("Liste oluşturuldu!");
+    })
+    .catch(err => alert("Hata oluştu."));
+};
 
   if (!veri || !kayitliKullanici) return <div>Yükleniyor...</div>;
 
@@ -124,21 +141,38 @@ const Profil = () => {
             </div>
         </div>
 
-        {/* Son Aktiviteler */}
         <div className="son-aktiviteler-kutusu">
             <h3>📢 Son Hareketler</h3>
-            <ul>
+            <div className="aktivite-listesi-profil">
                 {veri.sonAktiviteler?.length > 0 ? (
                     veri.sonAktiviteler.map(akt => (
-                        <li key={akt.id}>
-                            <span className="tarih">{new Date(akt.zaman).toLocaleDateString()}</span>
-                            <strong>{akt.baslik}</strong> içeriği için: <em>{akt.aciklama}</em>
-                        </li>
+                        <div 
+                            key={akt.id} 
+                            className="aktivite-satir"
+                            
+                        >
+                            <div className={`aktivite-ikon ${akt.tur}`}>
+                                {akt.tur === 'PUAN' && '⭐'}
+                                {akt.tur === 'YORUM' && '💬'}
+                                {akt.tur === 'IZLENDI' && '👁️'}
+                                {akt.tur === 'OKUNDU' && '📖'}
+                                {akt.tur === 'IZLENECEK' && '📌'}
+                                {akt.tur === 'OKUNACAK' && '🔖'}
+                            </div>
+
+                            <div className="aktivite-metin">
+                                <div className="aktivite-baslik-satiri">
+                                    <strong>{akt.baslik}</strong>
+                                    <span className="tarih">{new Date(akt.zaman).toLocaleDateString('tr-TR')}</span>
+                                </div>
+                                <p className="aktivite-aciklama">{akt.aciklama}</p>
+                            </div>
+                        </div>
                     ))
                 ) : (
-                    <li>Henüz bir hareket yok.</li>
+                    <div className="bos-aktivite">Henüz bir hareket yok.</div>
                 )}
-            </ul>
+            </div>
         </div>
 
         <div className="sekmeler">
@@ -146,6 +180,14 @@ const Profil = () => {
             <button className={aktifSekme === 'izlendi' ? 'aktif' : ''} onClick={() => setAktifSekme('izlendi')}>✅ İzlediklerim</button>
             <button className={aktifSekme === 'okunacak' ? 'aktif' : ''} onClick={() => setAktifSekme('okunacak')}>📚 Okunacaklar</button>
             <button className={aktifSekme === 'okundu' ? 'aktif' : ''} onClick={() => setAktifSekme('okundu')}>✔️ Okuduklarım</button>
+            {parseInt(profilId) === parseInt(benimId) && (
+                <button 
+                    className={aktifSekme === 'ozelliste' ? 'aktif' : ''} 
+                    onClick={() => setAktifSekme('ozelliste')}
+                >
+                    📑 Özel Listeler
+                </button>
+            )}
         </div>
 
         <div className="liste-icerik">
@@ -153,6 +195,47 @@ const Profil = () => {
             {aktifSekme === 'izlendi' && <ListeGoster items={veri.izlediklerim} />}
             {aktifSekme === 'okunacak' && <ListeGoster items={veri.okunacaklar} />}
             {aktifSekme === 'okundu' && <ListeGoster items={veri.okuduklarim} />}
+            {aktifSekme === 'ozelliste' && (
+            <div className="ozel-listeler-grid">
+                
+                {parseInt(profilId) === parseInt(benimId) && (
+                    <div className="ozel-liste-kart yeni-liste-kart">
+                        {listeOlusturmaModu ? (
+                            <div className="liste-form-kucuk">
+                                <input 
+                                    type="text" 
+                                    placeholder="Liste Adı..." 
+                                    value={yeniListeAdi} 
+                                    onChange={e => setYeniListeAdi(e.target.value)}
+                                    autoFocus
+                                />
+                                <div style={{display:'flex', gap:'5px', marginTop:'5px'}}>
+                                    <button onClick={listeOlustur} style={{background:'green', color:'white', flex:1}}>✓</button>
+                                    <button onClick={()=>setListeOlusturmaModu(false)} style={{background:'red', color:'white', flex:1}}>X</button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div onClick={() => setListeOlusturmaModu(true)} style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+                                <div className="art-ikon" style={{fontSize:'3rem', color:'#1877f2'}}>+</div>
+                                <span>Yeni Liste Oluştur</span>
+                            </div>
+                        )}
+                    </div>
+                )}
+
+                {ozelListeler.map(liste => (
+                    <div 
+                        key={liste.id} 
+                        className="ozel-liste-kart" 
+                        onClick={() => navigate(`/liste/${liste.id}`, { state: { baslik: liste.baslik } })}
+                    >
+                        <div className="klasor-ikon">📁</div>
+                        <h4>{liste.baslik}</h4>
+                        <span style={{fontSize:'0.8rem', color:'#666'}}>{new Date(liste.olusturulmaTarihi).toLocaleDateString()}</span>
+                    </div>
+                ))}
+            </div>
+        )}
         </div>
       </div>
     </div>

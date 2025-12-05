@@ -5,14 +5,14 @@ import './Form.css';
 
 const SifreSifirla = () => {
   const [searchParams] = useSearchParams();
-  const email = searchParams.get("email"); // Linkten gelen ?email=... bilgisini al
+  const email = searchParams.get("email"); 
   
   const [sifre, setSifre] = useState('');
   const [sifreTekrar, setSifreTekrar] = useState('');
   const [mesaj, setMesaj] = useState('');
   const [hata, setHata] = useState('');
   const navigate = useNavigate();
-  const PORT = "44321"; // Portunu kontrol et
+  const PORT = "44321"; 
 
   const guncelle = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const SifreSifirla = () => {
     axios.post(`https://localhost:${PORT}/api/Auth/SifreSifirla`, { email, yeniSifre: sifre })
       .then(res => {
           alert(res.data);
-          navigate('/'); // Başarılıysa giriş ekranına at
+          navigate('/'); 
       })
       .catch(err => setHata(err.response?.data || "Hata oluştu."));
   };

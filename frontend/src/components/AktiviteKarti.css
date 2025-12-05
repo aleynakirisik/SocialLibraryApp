@@ -15,21 +15,20 @@
 
 .kart-icerik {
   display: flex; gap: 15px; background-color: #f8f9fa;
-  padding: 12px; border-radius: 8px; cursor: pointer; transition: background 0.2s;
+  padding: 12px; border-radius: 8px;
 }
-.kart-icerik:hover { background-color: #f0f2f5; }
 
 .poster { width: 90px; height: 135px; object-fit: cover; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
 .detaylar { display: flex; flex-direction: column; justify-content: center; }
 .icerik-baslik { margin: 0 0 5px 0; font-size: 1.1rem; color: #333; }
 
-/* Puanlama Özel Tasarımı */
+
 .rating-gosterimi { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
 .yildizlar { color: #f5c518; letter-spacing: 2px; font-size: 1.2rem; }
 .puan-degeri { font-weight: bold; font-size: 1.1rem; background: #333; color: #f5c518; padding: 2px 8px; border-radius: 4px; }
 
-/* Yorum Özel Tasarımı */
+
 .review-gosterimi { font-style: italic; color: #555; font-size: 0.95rem; margin-top: 5px; }
 .read-more { color: #1877f2; font-weight: bold; margin-left: 5px; font-style: normal; }
 
@@ -38,3 +37,102 @@
 }
 .kart-alt button { background: none; border: none; cursor: pointer; color: #65676b; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
 .kart-alt button:hover { color: #1877f2; }
+
+
+.liste-bilgi {
+    background-color: #e7f3ff;
+    color: #1877f2;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+
+.alt-yorumlar-bolumu {
+    background-color: #f0f2f5;
+    padding: 10px;
+    border-radius: 0 0 12px 12px; 
+    border-top: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+.alt-yorum-listesi {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+    max-height: 200px;
+    overflow-y: auto; 
+}
+
+.alt-yorum-item {
+    display: flex;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.alt-yorum-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.alt-yorum-balon {
+    background-color: #e4e6eb; 
+    padding: 8px 12px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.alt-yorum-balon strong {
+    font-size: 0.85rem;
+    color: #050505;
+}
+
+.alt-yorum-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.alt-yorum-form input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: #f0f2f5; 
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.alt-yorum-form button {
+    background: none;
+    border: none;
+    color: #1877f2;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.alt-yorum-form button:disabled { color: #ccc; }
+
+.daha-fazla-oku {
+    color: #1877f2;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 0.9rem;
+}
+
+.daha-fazla-oku:hover {
+    text-decoration: underline;
+}
+
+.yorum-metni {
+    font-style: italic;
+    color: #555;
+    display: inline; 
+}
